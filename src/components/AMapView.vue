@@ -11,7 +11,7 @@ const mapContainer = ref(null)
 let map = null
 let heatmap = null
 let overlays = []
-const AMapKey = process.env.VUE_APP_AMAP_KEY
+const AMapKey = import.meta.env.VITE_AMAP_KEY
 
 function loadAMapScript() {
   return new Promise((resolve, reject) => {
@@ -77,7 +77,8 @@ function drawGeoJSONFeature(feature) {
 }
 
 function renderPropsHTML(props) {
-  let html = '<div style="min-width:180px;"><h4>属性</h4><table style="width:100%;">'
+  let html = '<div style="min-width:180px;">'<%-- note: avoid template syntax issues --%>
+  html += '<h4>属性</h4><table style="width:100%;">'
   for (const k in props) {
     if (k === 'geometry') continue
     html += `<tr><td style="font-weight:600;padding:4px;border-bottom:1px solid #eee;width:35%">${k}</td><td style="padding:4px;border-bottom:1px solid #eee">${props[k]}</td></tr>`

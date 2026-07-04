@@ -7,10 +7,10 @@
 
       <div class="panel-body">
         <LayerSearchButton
-            v-for="layer in layers"
-            :key="layer.id"
-            :layer="layer"
-            @search="onLayerSearch"
+          v-for="layer in layers"
+          :key="layer.id"
+          :layer="layer"
+          @search="onLayerSearch"
         />
       </div>
 
